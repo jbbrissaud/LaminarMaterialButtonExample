@@ -1,18 +1,23 @@
 package example
 
-import com.raquo.laminar.api.L._
+//import com.raquo.laminar.api.L._
 import org.scalajs.dom
 
-import com.github.uosis.laminar.webcomponents.material._
+import be.doeraene.webcomponents.ui5.*
+import be.doeraene.webcomponents.ui5.configkeys.*
+import com.raquo.laminar.api.L.*
+//import demo.helpers.{DemoPanel, Example, FetchDemoPanelFromGithub}
 
 ////////////////////////////////////////////// Main
 
 object MyApp:
   val myComponent =
     div(
-      Button(
-        _.id := "myButton",
-        _.label := "ok"
+      Input(
+        _.required := true,
+        _.valueState := ValueState.Information,
+        _.placeholder := "Enter your name",
+        onChange.mapToValue --> Observer(println)
       )
     )
       
