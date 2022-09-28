@@ -19,3 +19,6 @@
 !README.md
 
 !.gitignore
+
+frontend/target/**
+backend/target/**
