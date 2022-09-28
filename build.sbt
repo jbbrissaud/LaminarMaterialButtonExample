@@ -1,6 +1,6 @@
-ThisBuild / organization := "com.jbb"
-ThisBuild / name         := "monAppli"
-ThisBuild / scalaVersion := "3.1.1"
+ThisBuild / organization := "com.jbbrissaud"
+ThisBuild / name         := "LaminarMaterialButtonExample"
+ThisBuild / scalaVersion := "3.2.0"
 ThisBuild / version      := "0.1.0"
 
 val zioVersion        = "2.0.0"
@@ -19,48 +19,40 @@ lazy val backend = project
       "dev.zio"              %% "zio-json"   % zioJsonVersion,
       "io.d11"               %% "zhttp"      % zioHttpVersion,
       "com.github.jwt-scala" %% "jwt-core"   % "9.0.5",
-      "io.d11"               %% "zhttp-test" % zioHttpVersion % Test
+      "io.d11"               %% "zhttp-test" % zioHttpVersion % Test,
     )
-  ).dependsOn(shared.jvm)
+  )
 
 lazy val frontend = project
   .in(file("frontend"))
   .enablePlugins(ScalaJSPlugin)
+  .enablePlugins(ScalaJSBundlerPlugin)
   .settings(
     name                            := "frontend",
     version                         := "0.1.0-SNAPSHOT",
     scalaJSLinkerConfig ~= {
-      _.withModuleKind(ModuleKind.ESModule)
+      _.withModuleKind(ModuleKind.CommonJSModule) //.CommonJSModule)  //.ESModule)
     },
     scalaJSLinkerConfig ~= {
       _.withSourceMap(false)
     },
     scalaJSUseMainModuleInitializer := true,
+    //gitHub repository
+    githubOwner := "uosis",
+    githubRepository := "laminar-web-components",
+    githubSuppressPublicationWarning := true,
+    resolvers += Resolver.githubPackages("uosis"),
     libraryDependencies ++= Seq(
       "io.github.cquiroz" %%% "scala-java-time"           % "2.3.0",
       "io.github.cquiroz" %%% "scala-java-time-tzdb"      % "2.3.0",
       "org.scala-js"      %%% "scalajs-java-securerandom" % "1.0.0" cross CrossVersion.for3Use2_13,
-      //zio
-      "dev.zio"           %%% "zio"                       % zioVersion,
-      "dev.zio"           %%% "zio-json"                  % zioJsonVersion,
-      "dev.zio"           %%% "zio-prelude"               % "1.0.0-RC9",
       //laminar
       "com.raquo"         %%% "laminar"                   % laminarVersion,
-      "io.laminext"       %%% "fetch"                     % "0.14.3"
-    )
+      //laminar Google UI Components in gitHub repository
+      "com.github.uosis" %%% "laminar-web-components-material" % "0.1.0" cross CrossVersion.for3Use2_13
+    ),
+    /*Compile / npmDependencies ++= Seq(
+      "@material/mwc-button" -> "0.27.0"
+    )*/
   )
-  .dependsOn(shared.js)
 
-lazy val shared =
-  crossProject(JSPlatform, JVMPlatform)
-    .in(file("shared"))
-    .settings(libraryDependencies ++= Seq("dev.zio" %%% "zio-json" % zioJsonVersion))
-//    .jvmSettings(
-//      // Add JVM-specific settings here
-//      libraryDependencies ++= Seq("dev.zio" %% "zio-json" % zioJsonVersion)
-//    )
-//    .jsSettings(
-//      // Add JS-specific settings here
-////      scalaJSUseMainModuleInitializer := true,
-//      libraryDependencies ++= Seq("dev.zio" %%% "zio-json" % zioJsonVersion)
-//    )
