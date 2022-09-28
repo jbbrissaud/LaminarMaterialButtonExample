@@ -33,10 +33,6 @@ lazy val frontend = project
       _.withSourceMap(false)
     },
     scalaJSUseMainModuleInitializer := true,
-    //gitHub repository
-    //githubOwner := "uosis",
-    //githubRepository := "laminar-web-components",
-    //githubSuppressPublicationWarning := true,
     resolvers += "jitpack" at "https://jitpack.io",
     libraryDependencies ++= Seq(
       "io.github.cquiroz" %%% "scala-java-time"           % "2.3.0",
@@ -47,11 +43,5 @@ lazy val frontend = project
       //laminar SAP UI Components
       "com.github.sherpal" % "LaminarSAPUI5Bindings" % "1.3.0-8f02a832",
     ),
-    /*Compile / npmDependencies ++= Seq(
-      "@ui5/webcomponents" -> "1.3.0",
-      "@ui5/webcomponents-fiori" -> "1.3.0",
-      "@ui5/webcomponents-icons" -> "1.3.0",
-      "highlight.js" -> "^11.6.0"
-    )*/
   )
 
