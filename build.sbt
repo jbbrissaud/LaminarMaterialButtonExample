@@ -27,7 +27,7 @@ lazy val frontend = project
     name                            := "frontend",
     version                         := "0.1.0-SNAPSHOT",
     scalaJSLinkerConfig ~= {
-      _.withModuleKind(ModuleKind.ESModule)  //.CommonJSModule)  //.ESModule)
+      _.withModuleKind(ModuleKind.CommonJSModule)  //.CommonJSModule)  //.ESModule)
     },
     scalaJSLinkerConfig ~= {
       _.withSourceMap(false)
