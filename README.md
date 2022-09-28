@@ -1,6 +1,6 @@
-This project is a very basic app in Scala 3 + Laminar + Laminat Web Material Components.\
+This project is a very basic app in Scala 3 + Laminar + LaminarSAPUI5Bindings Components.\
 The backend uses zio-http and zio 2.\
-The frontend uses Laminar.
+The frontend uses Laminar + LaminarSAPUI5Bindings.
 
 ## I. Start the app
 
