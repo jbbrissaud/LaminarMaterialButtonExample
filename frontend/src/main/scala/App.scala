@@ -3,14 +3,17 @@ package example
 import com.raquo.laminar.api.L._
 import org.scalajs.dom
 
-//import com.github.uosis.laminar.webcomponents.material._
+import com.github.uosis.laminar.webcomponents.material._
 
 ////////////////////////////////////////////// Main
 
 object MyApp:
   val myComponent =
     div(
-      //Button()
+      Button(
+        _.id := "myButton",
+        _.label := "ok"
+      )
     )
       
   def main(args: Array[String]): Unit =
