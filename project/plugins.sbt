@@ -4,3 +4,5 @@ addSbtPlugin("io.spray"           % "sbt-revolver"             % "0.9.1")
 
 addSbtPlugin("org.scala-js"       % "sbt-scalajs"              % "1.11.0")
 
+addSbtPlugin("com.fiatjaf" %% "sbt-esbuild" % "0.1.1")
+

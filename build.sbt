@@ -21,13 +21,13 @@ lazy val backend = project
 
 lazy val frontend = project
   .in(file("frontend"))
-  .enablePlugins(ScalaJSPlugin)
+  .enablePlugins(ScalaJSPlugin,EsbuildPlugin)
   //.enablePlugins(ScalaJSBundlerPlugin)
   .settings(
     name                            := "frontend",
     version                         := "0.1.0-SNAPSHOT",
     scalaJSLinkerConfig ~= {
-      _.withModuleKind(ModuleKind.CommonJSModule)  //.CommonJSModule)  //.ESModule)
+      _.withModuleKind(ModuleKind.ESModule)  //.CommonJSModule)  //.ESModule)
     },
     scalaJSLinkerConfig ~= {
       _.withSourceMap(false)
@@ -43,5 +43,12 @@ lazy val frontend = project
       //laminar SAP UI Components
       "com.github.sherpal" % "LaminarSAPUI5Bindings" % "1.3.0-8f02a832",
     ),
+    Compile / npmDependencies ++= Seq(
+      "@ui5/webcomponents" -> "^1.3.0",
+      "@ui5/webcomponents-fiori" -> "^1.3.0",
+      "@ui5/webcomponents-icons" -> "^1.3.0",
+      "highlight.js" -> "^11.6.0"
+    ),
+    esPackageManager := Npm
   )
 

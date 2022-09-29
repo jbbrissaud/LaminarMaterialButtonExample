@@ -14,12 +14,14 @@
 !build.sbt
 !project/build.properties
 !project/plugins.sbt
-!package.json
+# !package.json
 
 !LICENSE
 !README.md
 
 !.gitignore
 
+frontend/target/*
+backend/target/*
 frontend/target/**
 backend/target/**

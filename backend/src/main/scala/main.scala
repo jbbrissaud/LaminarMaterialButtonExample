@@ -21,7 +21,12 @@ object WebServer extends ZIOAppDefault:
         val filename = "frontend/static/plante.ico"
         getFile(filename)
       case Method.GET -> !! / "static" / "main.js" =>
-        val filename = "frontend/target/scala-3.2.0/frontend-fastopt/main.js"
+        //val filename = "frontend/target/scala-3.2.0/frontend-fastopt/main.js"
+        val filename = "frontend/target/esbuild/bundle.js"
+        getFile(filename)
+      case Method.GET -> !! / "static" / "bundle.js.map" =>
+        //val filename = "frontend/target/scala-3.2.0/frontend-fastopt/main.js"
+        val filename = "frontend/target/esbuild/bundle.js.map"
         getFile(filename)
       case Method.GET -> !! / "static" / name =>
         val filename = s"frontend/static/$name"
