@@ -9,19 +9,14 @@
 !backend/src/**
 !frontend/src/**
 !frontend/static/**
-!shared/src/**
 
-!build.sbt
+!./build.sbt
 !project/build.properties
 !project/plugins.sbt
-# !package.json
 
-!LICENSE
-!README.md
+!./LICENSE
+!./README.md
 
-!.gitignore
+!./.gitignore
 
-frontend/target/*
-backend/target/*
-frontend/target/**
-backend/target/**
+

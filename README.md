@@ -24,5 +24,7 @@ sbt "~frontend / fastOptJS"
 
 Then you can access the frontend at http://localhost:8090 \
 
+It is just an Input. When validated (by Enter), it is displayed on the console of the web page.
+
 Note: The .gitignore file is a little bit unconventional, indicating what to keep and not what to ignore.
 

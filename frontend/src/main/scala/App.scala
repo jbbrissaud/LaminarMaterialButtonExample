@@ -14,7 +14,8 @@ object MyApp:
       Input(
         _.required := true,
         _.valueState := ValueState.Information,
-        _.placeholder := "Enter your name",
+        _.placeholder := "write something",
+        _.tpe := InputType.Password,
         onChange.mapToValue --> Observer(println)
       )
     )

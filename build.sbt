@@ -21,19 +21,19 @@ lazy val backend = project
 
 lazy val frontend = project
   .in(file("frontend"))
-  .enablePlugins(ScalaJSPlugin,EsbuildPlugin)
-  //.enablePlugins(ScalaJSBundlerPlugin)
+  .enablePlugins(ScalaJSPlugin)
+  .enablePlugins(EsbuildPlugin)  // for components
   .settings(
     name                            := "frontend",
     version                         := "0.1.0-SNAPSHOT",
     scalaJSLinkerConfig ~= {
-      _.withModuleKind(ModuleKind.ESModule)  //.CommonJSModule)  //.ESModule)
+      _.withModuleKind(ModuleKind.ESModule)
     },
     scalaJSLinkerConfig ~= {
-      _.withSourceMap(false)
+      _.withSourceMap(true)
     },
     scalaJSUseMainModuleInitializer := true,
-    resolvers += "jitpack" at "https://jitpack.io",
+    resolvers += "jitpack" at "https://jitpack.io",  // for components
     libraryDependencies ++= Seq(
       "io.github.cquiroz" %%% "scala-java-time"           % "2.3.0",
       "io.github.cquiroz" %%% "scala-java-time-tzdb"      % "2.3.0",
@@ -43,6 +43,7 @@ lazy val frontend = project
       //laminar SAP UI Components
       "com.github.sherpal" % "LaminarSAPUI5Bindings" % "1.3.0-8f02a832",
     ),
+    // for components
     Compile / npmDependencies ++= Seq(
       "@ui5/webcomponents" -> "^1.3.0",
       "@ui5/webcomponents-fiori" -> "^1.3.0",
